@@ -4,17 +4,17 @@ import {getAuth} from 'firebase/auth';
  
 const firebaseConfig = {
 
-  apiKey: "AIzaSyBncwrkKo8EgeUu9vrQ0FHQ6BvVGciX6iU",
+  apiKey: "xxxxxx",
 
-  authDomain: "mywatchlist-5acc3.firebaseapp.com",
+  authDomain: "xxxxxxx",
 
-  projectId: "mywatchlist-5acc3",
+  projectId: "xxxxxxxxx",
 
-  storageBucket: "mywatchlist-5acc3.appspot.com",
+  storageBucket: "xxxxxxxxxx",
 
-  messagingSenderId: "381812625469",
+  messagingSenderId: "xxxxxxxxxxx",
 
-  appId: "1:381812625469:web:c7c3effafc0a05b0299a54"
+  appId: "xxxxxxxxxx"
 
 };
 
