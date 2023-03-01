@@ -42,6 +42,12 @@ function App() {
                   <AddEditWatchList />
                 </ProtectedRoute>
                 } />
+            <Route path='/editwatchlist/:id' 
+              element={
+                <ProtectedRoute>
+                  <AddEditWatchList />
+                </ProtectedRoute>
+                } />
             <Route path='/categories' 
               element={
                 <ProtectedRoute>
