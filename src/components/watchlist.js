@@ -145,8 +145,8 @@ const WatchList = () => {
                 <Modal.Body>
                     <span><b>Language:</b> {language}</span><br />
                     <span><b>Category:</b> {category}</span><br />
-                    <span><b>Is Watched Completed:</b> {isWatchedCompleted}</span><br />
-                    <a href={infoUrl} target="_blank">Go to link</a>
+                    <span><b>Is Watched Completed:</b> {isWatchedCompleted}</span><br /><br />
+                    For More Info: <a href={infoUrl} target="_blank">Click Here</a>
                 </Modal.Body>
                 <Modal.Footer>
                 <Button variant="secondary" onClick={handleClose}>
