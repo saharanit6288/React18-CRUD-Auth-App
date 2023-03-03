@@ -61,6 +61,21 @@ table {
   color: #61dafb;
 }
 
+.btn-grp {
+  text-align: right;
+}
+
+.btn-space-btwn {
+  margin-right:5px;
+}
+
+.span-small-text {
+  font-size: 13px;
+  color: red;
+  font-weight: 400;
+  font-style: italic;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

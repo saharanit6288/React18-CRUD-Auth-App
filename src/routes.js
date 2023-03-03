@@ -8,6 +8,7 @@ import Category from './components/category';
 import Language from './components/language';
 import ErrorTemplate from './components/errorTemplate';
 import ProtectedRoute from './components/protectedRoute';
+import SearchWatchlist from './components/searchWatchlist';
 
 const AppRoutes = () => {
     return (
@@ -17,27 +18,28 @@ const AppRoutes = () => {
                 <Route path='/addwatchlist' 
                 element={
                     <ProtectedRoute>
-                    <AddEditWatchList />
+                        <AddEditWatchList />
                     </ProtectedRoute>
                     } />
                 <Route path='/editwatchlist/:id' 
                 element={
                     <ProtectedRoute>
-                    <AddEditWatchList />
+                        <AddEditWatchList />
                     </ProtectedRoute>
                     } />
                 <Route path='/categories' 
                 element={
                     <ProtectedRoute>
-                    <Category />
+                        <Category />
                     </ProtectedRoute>
                     } />
                 <Route path='/languages' 
                 element={
                     <ProtectedRoute>
-                    <Language />
+                        <Language />
                     </ProtectedRoute>
                     } />
+                <Route path='/searchwatchlist' element={<SearchWatchlist />} />
                 <Route path='/login' element={<Login />} />
                 {/* <Route path='/register' element={<Register />} /> */}
                 <Route path='*' element={<ErrorTemplate />} />

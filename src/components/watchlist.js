@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Button, Table } from "react-bootstrap";
+import { Button, ButtonGroup, Table } from "react-bootstrap";
 import { useUserAuth } from '../context/userAuthContext';
 import CategoryService from '../services/category.service';
 import LanguageService from '../services/language.service';
@@ -12,12 +12,19 @@ import Modal from 'react-bootstrap/Modal';
 const WatchList = () => {
     const {user} = useUserAuth();
     const [watchlist, setWatchlist] = useState([]);
-    
+    const [totalwatchlist, setTotalWatchlist] = useState([]);
     const [title, setTitle] = useState("");
     const [infoUrl, setInfoUrl] = useState("");
     const [isWatchedCompleted, setIsWatchedCompleted] = useState("");
     const [language, setLanguage] = useState("");
     const [category, setCategory] = useState("");
+    const [page, setPage] = useState(1);
+    const [totalPage, setTotalPage] = useState(0);
+    const [totalItems, setTotalItems] = useState(0);
+
+    let pageSize = 25;
+
+    //let userName = user.email.split('@')[0];
 
     const showLoader = () => {
         loader.show();
@@ -38,10 +45,38 @@ const WatchList = () => {
         getWatchlist();
       }, []);
 
+    const getTotalPageHandler = async () => {
+        const dataCount = await WatchlistService.getWatchlistTotalCount();
+        let pageTotal = Math.ceil(dataCount/pageSize);
+        setTotalPage(pageTotal);
+        setTotalItems(dataCount);
+    }
+
     const getWatchlist = async () => {
-        const dataList = await WatchlistService.getAllWatchlist();
-        console.log(dataList.docs);
+        const dataList = await WatchlistService.getWatchlistFirst();
+        //console.log(dataList.docs);
         setWatchlist(dataList.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+        getTotalPageHandler();
+        hideLoader();
+    }
+
+    const showNext = async ({item}) => {
+        if(watchlist.length === 0) {
+            alert("No Record(s) Found !")
+        } else {
+            showLoader();
+            const dataList = await WatchlistService.getWatchlistNext(item.createdOn);
+            setWatchlist(dataList.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+            setPage(page + 1);
+            hideLoader();
+        }
+    }
+
+    const showPrevious = async ({item}) => {
+        showLoader();
+        const dataList = await WatchlistService.getWatchlistPrev(item.createdOn);
+        setWatchlist(dataList.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+        setPage(page - 1);
         hideLoader();
     }
 
@@ -78,7 +113,9 @@ const WatchList = () => {
                 <img src={FidgetLoader} alt="loading" />
             </LoaderContainer>
             <div className="p-4 box">
-                <h2 className="mb-3"></h2>
+                <h5 className="mb-3">
+                    Total Record(s): {totalItems}
+                </h5>
             </div>
             
             <Table striped bordered hover size="sm">
@@ -131,13 +168,22 @@ const WatchList = () => {
                 })}
                 </tbody>
             </Table>
-
-            <div>
-                <p>
-                    <span><b>Total Record(s): {watchlist.length}</b></span>
-                </p>
+            
+            <div className="btn-grp">
+                <ButtonGroup>
+                    <Button disabled={page === 1} variant="link"
+                            onClick={() => showPrevious({ item: watchlist[0] }) }>
+                            {'< Previous'}
+                    </Button> 
+                    <span className="btn-space-btwn"></span>
+                    <Button disabled={(watchlist.length < pageSize || totalPage == page)} variant="link"
+                        onClick={() => showNext({ item: watchlist[watchlist.length - 1] })}>
+                        {'Next >'}
+                    </Button>
+                </ButtonGroup>
+                
             </div>
-
+            
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
                 <Modal.Title>{title}</Modal.Title>

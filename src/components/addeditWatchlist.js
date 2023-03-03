@@ -57,15 +57,18 @@ const AddEditWatchList = () => {
             return;
         }
 
+        let searchTitle = getSearchTitleArr(title);
+
         showLoader();
         const watchlist = {
-            title,
+            title: title.split('.').join(' '),
             infoUrl,
             languageId,
             categoryId,
             isWatchedCompleted,
             createdBy:createdBy,
-            createdOn:createdOn
+            createdOn:createdOn,
+            searchTitle
         }
 
         try {
@@ -89,6 +92,12 @@ const AddEditWatchList = () => {
         setLanguageId("");
         setCategoryId("");
         setIsWatchedCompleted(false);
+    }
+
+    const getSearchTitleArr = (value) => {
+        let title = value.split('.').join(' ');
+        let titleArr = title.toLowerCase().split(' ');
+        return titleArr;
     }
 
     const getLanguages = async () => {
