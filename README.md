@@ -4,7 +4,7 @@
 
 # Screenshots:
 ### Landing Page-
-![image](https://user-images.githubusercontent.com/25769384/223513974-dcfcf454-3739-4ff4-9e5d-5dbc15a893d7.png)
+![image](https://user-images.githubusercontent.com/25769384/223785628-c3c838e3-3a1d-4dba-9168-aa74e67c286e.png)
 
 ### Search Page-
 ![image](https://user-images.githubusercontent.com/25769384/223514325-3b708d89-e0ce-4798-bf77-c6648cf6acd4.png)
@@ -13,7 +13,7 @@
 ![image](https://user-images.githubusercontent.com/25769384/223514168-8086bf66-63a0-4787-922b-d20129fdb276.png)
 
 ### Home Page (After Login)-
-![image](https://user-images.githubusercontent.com/25769384/223514536-a51920c8-94ee-4f5d-b606-af254f0024f3.png)
+![image](https://user-images.githubusercontent.com/25769384/223785783-053ca005-f437-4024-bb9b-aa63d6e074c8.png)
 
 ### Add Watchlist Page- 
 ![image](https://user-images.githubusercontent.com/25769384/223514810-012c13f5-56d7-4ea6-a71f-d2814d7d0c40.png)
