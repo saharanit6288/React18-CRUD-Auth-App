@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button, ButtonGroup, Table } from "react-bootstrap";
+import Card from 'react-bootstrap/Card';
 import { useUserAuth } from '../context/userAuthContext';
 import CategoryService from '../services/category.service';
 import LanguageService from '../services/language.service';
@@ -22,7 +23,7 @@ const WatchList = () => {
     const [totalPage, setTotalPage] = useState(0);
     const [totalItems, setTotalItems] = useState(0);
 
-    let pageSize = 25;
+    let pageSize = 24;
 
     //let userName = user.email.split('@')[0];
 
@@ -55,7 +56,10 @@ const WatchList = () => {
     const getWatchlist = async () => {
         const dataList = await WatchlistService.getWatchlistFirst();
         //console.log(dataList.docs);
-        setWatchlist(dataList.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+        setWatchlist(dataList.docs.map((doc) => ({ 
+            ...doc.data(), 
+            id: doc.id 
+        })));
         getTotalPageHandler();
         hideLoader();
     }
@@ -117,8 +121,52 @@ const WatchList = () => {
                     Total Record(s): {totalItems}
                 </h5>
             </div>
-            
-            <Table striped bordered hover size="sm">
+            <div className="row">
+            {watchlist.map((doc, index) => {
+                return (
+                    <Card className="text-center col-3 div-card-margin">
+                        <Card.Header>
+                            <Card.Title>{doc.title}</Card.Title>
+                        </Card.Header>
+                        <Card.Body>
+                            <Card.Text>
+                                <span><b>Is Watched Completed:</b> {doc.isWatchedCompleted ? 'Yes' : 'No'}</span><br />
+                                <span>For More Info: <a href={doc.infoUrl} target="_blank">Click Here</a></span>
+                            </Card.Text>
+                            <Button
+                                variant="dark edit"
+                                className="edit"
+                                onClick={(e) => openWatchlistModal(doc)}
+                            >
+                                Details
+                            </Button>
+                            {user && (
+                                <>
+                                    <Button
+                                        variant="secondary"
+                                        className="edit"
+                                        onClick={(e) => goToEdit(doc.id)}
+                                    >
+                                        Edit
+                                    </Button>
+                                    <Button
+                                        variant="danger"
+                                        className="delete"
+                                        onClick={(e) => deleteHandler(doc.id)}
+                                    >
+                                        Delete
+                                    </Button>
+                                </>
+                            )}
+                        </Card.Body>
+                        <Card.Footer className="text-muted">
+                            
+                        </Card.Footer>
+                    </Card>
+                )
+            })}
+            </div>
+            {/* <Table striped bordered hover size="sm">
                 <thead>
                 <tr>
                     <th>#</th>
@@ -167,7 +215,7 @@ const WatchList = () => {
                     );
                 })}
                 </tbody>
-            </Table>
+            </Table> */}
             
             <div className="btn-grp">
                 <ButtonGroup>

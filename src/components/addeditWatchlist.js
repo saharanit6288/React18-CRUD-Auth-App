@@ -36,6 +36,14 @@ const AddEditWatchList = () => {
     let createdBy = user.email.split('@')[0];
     let createdOn = new Date();
 
+    const clearAll = () => {
+        setTitle("");
+        setInfoUrl("");
+        setLanguageId("");
+        setCategoryId("");
+        setIsWatchedCompleted(false);
+    }
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         setMessage("");
@@ -87,11 +95,7 @@ const AddEditWatchList = () => {
             setMessage({ error: true, msg: err.message });
         }
       
-        setTitle("");
-        setInfoUrl("");
-        setLanguageId("");
-        setCategoryId("");
-        setIsWatchedCompleted(false);
+        clearAll();
     }
 
     const getSearchTitleArr = (value) => {
@@ -147,6 +151,10 @@ const AddEditWatchList = () => {
         if(id !== undefined && id !== ""){
             getWatchlistById(id);
         }
+        else {
+            clearAll();
+            setHeadingText("Add Watchlist");
+        }
       }, [id]);
 
     return (
@@ -175,7 +183,7 @@ const AddEditWatchList = () => {
                     </Form.Group>
 
                     <Form.Group className="mb-3 col-4" controlId="formInfoUrl">
-                        <Form.Label>Password</Form.Label>
+                        <Form.Label>Info Url</Form.Label>
                         <Form.Control type="text" placeholder="Info Url" value={infoUrl}
                         onChange={(e) => setInfoUrl(e.target.value)} />
                     </Form.Group>

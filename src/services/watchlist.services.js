@@ -18,7 +18,7 @@ import {
 from "firebase/firestore";
 
 const watchlistCollectionRef = collection(db, "watchlist");
-let pageSize = 25;
+let pageSize = 24;
 
 class WatchlistService {
     addWatchlist = (data) => {
