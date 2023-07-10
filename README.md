@@ -2,6 +2,8 @@
 
 ### My Watchlist -> https://mywatchlist-5acc3.web.app/
 
+### Firebase Project Deploy Steps -> https://www.geeksforgeeks.org/how-to-deploy-react-project-on-firebase/
+
 # Screenshots:
 ### Landing Page-
 ![image](https://user-images.githubusercontent.com/25769384/223785628-c3c838e3-3a1d-4dba-9168-aa74e67c286e.png)
