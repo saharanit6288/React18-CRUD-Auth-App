@@ -24,7 +24,7 @@ const ProtectedNavBar = () => {
                   <Link to="/addwatchlist" className="nav-link">Add Watchlist</Link>
                   <Link to="/categories" className="nav-link">Categories</Link>
                   <Link to="/languages" className="nav-link">Languages</Link>
-                  
+                  <Link to="/addBulkWatchlist" className="nav-link">Add Bulk Watchlist</Link>
                 </>
               )}
               <Link to="/searchwatchlist" className="nav-link">Search Watchlist</Link>

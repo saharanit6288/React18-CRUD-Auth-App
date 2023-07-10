@@ -9,6 +9,7 @@ import Language from './components/language';
 import ErrorTemplate from './components/errorTemplate';
 import ProtectedRoute from './components/protectedRoute';
 import SearchWatchlist from './components/searchWatchlist';
+import AddBulkWatchlist from './components/addBulkWatchlist';
 
 const AppRoutes = () => {
     return (
@@ -38,6 +39,12 @@ const AppRoutes = () => {
                     <ProtectedRoute>
                         <Language />
                     </ProtectedRoute>
+                    } />
+                <Route path='/addBulkWatchlist'
+                    element={
+                        <ProtectedRoute>
+                            <AddBulkWatchlist />
+                        </ProtectedRoute>
                     } />
                 <Route path='/searchwatchlist' element={<SearchWatchlist />} />
                 <Route path='/login' element={<Login />} />
