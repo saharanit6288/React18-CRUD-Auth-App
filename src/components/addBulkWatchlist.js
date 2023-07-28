@@ -4,7 +4,7 @@ import CategoryService from '../services/category.service';
 import LanguageService from '../services/language.service';
 import WatchlistService from '../services/watchlist.services';
 import { LoaderContainer, loader } from "react-global-loader";
-import FidgetLoader from "../images/loader.gif";
+import { RotatingLines } from 'react-loader-spinner';
 import { useNavigate, useParams } from "react-router-dom";
 import { useUserAuth } from '../context/userAuthContext';
 import * as XLSX from "xlsx";
@@ -134,7 +134,13 @@ const AddBulkWatchlist = () => {
     return (
         <>
             <LoaderContainer>
-                <img src={FidgetLoader} alt="loading" />
+                <RotatingLines
+                    strokeColor="green"
+                    strokeWidth="5"
+                    animationDuration="0.75"
+                    width="96"
+                    visible={true}
+                />
             </LoaderContainer>
             <div className="p-4 box">
                 <h2 className="mb-3">Add Bulk Watchlist</h2>

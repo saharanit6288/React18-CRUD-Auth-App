@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Form, Alert, Button, Table } from "react-bootstrap";
 import CategoryService from '../services/category.service';
 import { LoaderContainer, loader } from "react-global-loader";
-import FidgetLoader from "../images/loader.gif";
+import { RotatingLines } from 'react-loader-spinner';
 
 const Category = () => {
     const [categoryId, setCategoryId] = useState("");
@@ -81,7 +81,13 @@ const Category = () => {
     return (
         <>
             <LoaderContainer>
-                <img src={FidgetLoader} alt="loading" />
+                <RotatingLines
+                    strokeColor="green"
+                    strokeWidth="5"
+                    animationDuration="0.75"
+                    width="96"
+                    visible={true}
+                />
             </LoaderContainer>
             <div className="p-4 box">
                 <h2 className="mb-3">Add Category</h2>

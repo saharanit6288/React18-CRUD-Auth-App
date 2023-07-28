@@ -4,7 +4,7 @@ import { Form, Alert } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import { useUserAuth } from '../context/userAuthContext';
 import { LoaderContainer, loader } from "react-global-loader";
-import FidgetLoader from "../images/loader.gif";
+import { RotatingLines } from 'react-loader-spinner';
 
 const Login = () => {
 
@@ -41,7 +41,13 @@ const Login = () => {
     return (
         <>
             <LoaderContainer>
-                <img src={FidgetLoader} alt="loading" />
+                <RotatingLines
+                    strokeColor="green"
+                    strokeWidth="5"
+                    animationDuration="0.75"
+                    width="96"
+                    visible={true}
+                />
             </LoaderContainer>
             <div className="p-4 box">
                 <h2 className="mb-3">Login</h2>

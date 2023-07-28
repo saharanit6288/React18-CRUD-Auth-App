@@ -7,7 +7,7 @@ import CategoryService from '../services/category.service';
 import LanguageService from '../services/language.service';
 import WatchlistService from '../services/watchlist.services';
 import { LoaderContainer, loader } from "react-global-loader";
-import FidgetLoader from "../images/loader.gif";
+import { RotatingLines } from 'react-loader-spinner';
 import Modal from 'react-bootstrap/Modal';
 
 const WatchList = () => {
@@ -114,12 +114,33 @@ const WatchList = () => {
     return (
         <>
             <LoaderContainer>
-                <img src={FidgetLoader} alt="loading" />
+                {/*<img src={FidgetLoader} alt="loading" />*/}
+                <RotatingLines
+                    strokeColor="green"
+                    strokeWidth="5"
+                    animationDuration="0.75"
+                    width="96"
+                    visible={true}
+                />
             </LoaderContainer>
             <div className="p-4 box">
                 <h5 className="mb-3">
                     Total Record(s): {totalItems}
                 </h5>
+            </div>
+            <div className="btn-grp">
+                <ButtonGroup>
+                    <Button disabled={page === 1} variant="link"
+                        onClick={() => showPrevious({ item: watchlist[0] })}>
+                        {'< Previous'}
+                    </Button>
+                    <span className="btn-space-btwn"></span>
+                    <Button disabled={(watchlist.length < pageSize || totalPage == page)} variant="link"
+                        onClick={() => showNext({ item: watchlist[watchlist.length - 1] })}>
+                        {'Next >'}
+                    </Button>
+                </ButtonGroup>
+
             </div>
             <div className="row">
             {watchlist.map((doc, index) => {
