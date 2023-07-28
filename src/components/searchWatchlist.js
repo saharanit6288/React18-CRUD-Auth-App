@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { Form, Alert } from "react-bootstrap";
 import { Button, Table } from "react-bootstrap";
 import { useUserAuth } from '../context/userAuthContext';
@@ -76,9 +76,9 @@ const SearchWatchlist = () => {
         setMessage("");
     }
 
-    const goToEdit = (id) => {
-        navigate(`/editwatchlist/${id}`);
-    }
+    //const goToEdit = (id) => {
+    //    navigate(`/editwatchlist/${id}`);
+    //}
 
     const getLanguages = async () => {
         const dataList = await LanguageService.getAllLanguage();
@@ -208,13 +208,7 @@ const SearchWatchlist = () => {
                                         </Button>
                                         {user && (
                                             <>
-                                                <Button
-                                                    variant="secondary"
-                                                    className="edit"
-                                                    onClick={(e) => goToEdit(doc.id)}
-                                                >
-                                                    Edit
-                                                </Button>
+                                                <Link className="btn btn-secondary" to={`/editwatchlist/${doc.id}`}>Edit</Link>
                                             </>
                                         )}
                                     </td>
